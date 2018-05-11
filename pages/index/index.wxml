@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  
+  <view class='todos'>
+  <button open-type="contact" size="mini" session-from= "udesk|{{userInfo.nickName}}|{{userInfo.avatarUrl}}">进入客服会话     </button>
+  </view>
+  <view class="content">  
+    <view  style="flex:1;height:50px;background-color:#D8BFD8">{{customer_info}}</view>  
+    <view style="flex:1;height:50px;background-color:#87CEFA">{{note_info}}</view>
+  </view>
+  <view class='todos'>
+  <button open-type="contact" size="mini" session-from= "udesk|{{userInfo.nickName}}|{{userInfo.avatarUrl}}|customer^{{customer_info}}|note^{{note_info}}">自定义传参数</button>
+  </view>
+</view>
